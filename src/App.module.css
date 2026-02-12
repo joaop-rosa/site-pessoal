@@ -1,0 +1,25 @@
+.section {
+  width: 100dvw;
+  height: 100dvh;
+  background-color: black;
+  position: relative;
+}
+
+.imageBackground {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(3px);
+}
+
+.bookWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
