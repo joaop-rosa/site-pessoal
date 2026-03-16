@@ -1,15 +1,11 @@
-import s from "./App.module.css"
-import logo from "@/assets/background.png"
-import { Book } from "./components/Book"
+import { BookSection } from "./components/BookSection"
+import { BookProvider } from "./context/BookProvider"
 
 function App() {
   return (
-    <section className={s.section}>
-      <img src={logo} alt='' className={s.imageBackground} />
-      <div className={s.bookWrapper}>
-        <Book />
-      </div>
-    </section>
+    <BookProvider>
+      <BookSection />
+    </BookProvider>
   )
 }
 

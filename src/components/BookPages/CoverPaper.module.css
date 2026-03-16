@@ -1,0 +1,19 @@
+.cover {
+  background-image: url("/src/assets/coverTexture.png");
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-cinzel);
+  color: yellow;
+  box-shadow: inset -5px -2px 25px 5px rgba(0, 0, 0, 0.8);
+}
+
+.title {
+  font-size: 42px;
+  letter-spacing: 2px;
+}

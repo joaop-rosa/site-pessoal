@@ -1,44 +1,42 @@
+import { useBook } from "@/context/BookProvider"
 import s from "./Book.module.css"
+import { Paper } from "./Paper"
+import { CoverPaper } from "./BookPages/CoverPaper"
+import { EndPaper } from "./BookPages/EndPaper"
+import cn from "classnames"
 
 export function Book() {
+  const { bookRef, paper2, paper1, paper3, isOpen, currentLocation } = useBook()
+
   return (
-    <div id='book' className={s.book}>
-      <div id='p1' className={s.paper}>
-        <div className={s.front}>
-          <div id='f1' className={s.frontContent}>
-            <h1>Front 1</h1>
-          </div>
-        </div>
-        <div className={s.back}>
-          <div id='b1' className={s.backContent}>
-            <h1>Back 1</h1>
-          </div>
-        </div>
-      </div>
-      <div id='p2' className={s.paper}>
-        <div className={s.front}>
-          <div id='f2' className={s.frontContent}>
-            <h1>Front 2</h1>
-          </div>
-        </div>
-        <div className={s.back}>
-          <div id='b2' className={s.backContent}>
-            <h1>Back 2</h1>
-          </div>
-        </div>
-      </div>
-      <div id='p3' className={s.paper}>
-        <div className={s.front}>
-          <div id='f3' className={s.frontContent}>
-            <h1>Front 3</h1>
-          </div>
-        </div>
-        <div className={s.back}>
-          <div id='b3' className={s.backContent}>
-            <h1>Back 3</h1>
-          </div>
-        </div>
-      </div>
+    <div
+      id='book'
+      ref={bookRef}
+      className={cn(s.book, { [s.closed]: !isOpen && currentLocation === 2 })}
+    >
+      <CoverPaper />
+
+      <Paper
+        innerRef={paper1}
+        number={3}
+        frontContent='Front 2'
+        backContent='Back 2'
+      />
+      <Paper
+        innerRef={paper2}
+        number={4}
+        frontContent='Front 3'
+        backContent='Back 3'
+      />
+
+      <Paper
+        innerRef={paper3}
+        number={5}
+        frontContent='Front 4'
+        backContent='Back 4'
+      />
+
+      <EndPaper />
     </div>
   )
 }

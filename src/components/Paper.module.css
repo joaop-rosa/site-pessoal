@@ -1,0 +1,105 @@
+.paper {
+  --border-radius: 5px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  perspective: 1500px;
+}
+
+.front,
+.back {
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  transition: transform 1s;
+}
+
+.front {
+  z-index: 1;
+  backface-visibility: hidden;
+}
+
+.back {
+  z-index: 0;
+}
+
+.frontContent,
+.backContent {
+  width: 100%;
+  height: 100%;
+}
+
+.innerPageFrontContent,
+.innerPageBackContent {
+  background-image: url("/src/assets/pageTexture.png");
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.frontContent {
+  box-shadow: inset 10px 0 10px -2px rgba(0, 0, 0, 0.62);
+}
+
+.backContent {
+  box-shadow: inset -10px 0 30px -10px rgba(0, 0, 0, 0.62);
+  transform: rotateY(180deg);
+}
+
+/* Paper flip effect */
+.flipped .front,
+.flipped .back {
+  transform: rotateY(-180deg);
+}
+
+.alreadyFlipped .front,
+.alreadyFlipped .back {
+  transform: rotateY(-180deg);
+}
+
+.innerPaper {
+  margin: 10px 10px 10px 10px;
+  margin-left: 0;
+  width: calc(100% - 10px);
+  height: calc(100% - 20px);
+}
+
+.cover.closedStart {
+  transform: translate(-12px, -12px);
+  /* clip-path: polygon(0 0, 100% 0, 100% 97%, 23% 97%, 0 100%); */
+}
+
+.end.closedStart {
+  width: calc(100% + 12px);
+  transform: translateX(-12px);
+}
+
+/* Paper stack order */
+.cover {
+  z-index: 5;
+  transition: transform 0.5s;
+}
+
+.p2 {
+  z-index: 4;
+}
+
+.p3 {
+  z-index: 3;
+}
+
+.p4 {
+  z-index: 2;
+}
+
+.end {
+  z-index: 1;
+  transition: all 0.5s;
+}
